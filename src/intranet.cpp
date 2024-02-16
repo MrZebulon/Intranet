@@ -5,6 +5,9 @@
 #include "intranet.hpp"
 
 void Intranet::decode() {
+	if(!available())
+		return;
+
 	uint8_t dataIn = readByte();
 	switch (status) {
 		case PACKET_DEST:
@@ -77,7 +80,9 @@ void Intranet::encode(uint8_t packetDestIn, uint8_t idIn, uint8_t* payloadIn, ui
 }
 
 uint8_t Intranet::checkFunction(uint8_t* bufferIn, uint32_t lenIn) {
+	// Default check = checksum
 	uint8_t out = 0x00;
+
 	for(uint32_t i = 0; i < lenIn; i++)
 		out += bufferIn[i];
 

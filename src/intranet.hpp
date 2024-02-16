@@ -37,6 +37,7 @@ protected:
 	uint8_t buffer[MAX_BUFFER_SIZE];
 	uint8_t self;
 
+	virtual bool available() = 0;
 	virtual uint8_t checkFunction(uint8_t* bufferIn, uint32_t lenIn);
 	virtual void callback() = 0;
 
