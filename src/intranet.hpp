@@ -22,9 +22,10 @@ enum IntranetParserStatus {
 
 class Intranet {
 public:
+	Intranet(uint8_t selfIn) : self(selfIn) {}
+
 	bool decode();
 	void encode(uint8_t packetDestIn, uint8_t idIn, uint8_t* payloadIn, uint32_t lenIn);
-
 
 private:
 	uint8_t packetLen;
@@ -38,12 +39,12 @@ protected:
 	uint8_t self;
 
 	virtual bool available() = 0;
-	virtual uint8_t checkFunction(uint8_t* bufferIn, uint32_t lenIn);
 	virtual void callback() = 0;
 
 	virtual uint8_t readByte() = 0;
 	virtual void writeByte(uint8_t& byte) = 0;
 
+	virtual uint8_t checkFunction(uint8_t* bufferIn, uint32_t lenIn);
 };
 
 

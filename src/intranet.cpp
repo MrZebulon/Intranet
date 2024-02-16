@@ -90,4 +90,3 @@ uint8_t Intranet::checkFunction(uint8_t* bufferIn, uint32_t lenIn) {
 
 	return out;
 }
-
