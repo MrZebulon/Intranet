@@ -33,7 +33,7 @@ protected:
 	uint8_t packetSrc;
 	uint8_t packetId;
 	uint8_t packetLen;
-	&
+
 	IntranetParserStatus status;
 	uint8_t buffer[MAX_BUFFER_SIZE];
 	uint8_t self;
