@@ -28,12 +28,12 @@ public:
 	void encode(uint8_t packetDestIn, uint8_t idIn, uint8_t* payloadIn, uint32_t lenIn);
 
 private:
-	uint8_t packetLen;
 	uint8_t packetIdx;
 protected:
 	uint8_t packetSrc;
 	uint8_t packetId;
-
+	uint8_t packetLen;
+	&
 	IntranetParserStatus status;
 	uint8_t buffer[MAX_BUFFER_SIZE];
 	uint8_t self;
