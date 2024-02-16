@@ -22,7 +22,7 @@ enum IntranetParserStatus {
 
 class Intranet {
 public:
-	void decode();
+	bool decode();
 	void encode(uint8_t packetDestIn, uint8_t idIn, uint8_t* payloadIn, uint32_t lenIn);
 
 

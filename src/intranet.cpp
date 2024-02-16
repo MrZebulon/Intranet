@@ -4,9 +4,9 @@
 
 #include "intranet.hpp"
 
-void Intranet::decode() {
+bool Intranet::decode() {
 	if(!available())
-		return;
+		return false;
 
 	uint8_t dataIn = readByte();
 	switch (status) {
@@ -61,6 +61,8 @@ void Intranet::decode() {
 			status = PACKET_DEST;
 			break;
 	}
+
+	return true;
 }
 
 void Intranet::encode(uint8_t packetDestIn, uint8_t idIn, uint8_t* payloadIn, uint32_t lenIn) {
