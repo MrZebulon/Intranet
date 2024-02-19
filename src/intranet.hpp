@@ -29,10 +29,10 @@ public:
 
 private:
 	uint8_t packetIdx;
+	uint8_t packetLen;
 protected:
 	uint8_t packetSrc;
 	uint8_t packetId;
-	uint8_t packetLen;
 
 	IntranetParserStatus status;
 	uint8_t buffer[MAX_BUFFER_SIZE];
