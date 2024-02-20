@@ -3,4 +3,5 @@ project(Intranet)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_library(Intranet src/intranet.cpp src/intranet.hpp)
+add_library(Intranet src/intranet.hpp src/arbitrated_intranet.hpp src/arbitrated_intranet.hpp src/arbitrated_intranet.cpp)
+
