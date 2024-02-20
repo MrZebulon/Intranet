@@ -65,27 +65,23 @@ bool Intranet::decode() {
 	return true;
 }
 
-void Intranet::encode(uint8_t packetDestIn, uint8_t idIn, uint8_t* payloadIn, uint32_t lenIn) {
-	auto *bufferOut = new uint8_t[lenIn + METADATA_BYTES];
+void Intranet::encode(uint8_t packetDestIn, uint8_t idIn, uint8_t* payloadIn, uint8_t lenIn) {
+	writeByte(packetDestIn);
+	writeByte(self);
+	writeByte(idIn);
+	writeByte(lenIn);
 
-	bufferOut[0] = packetDestIn;
-	bufferOut[1] = self;
-	bufferOut[2] = idIn;
-	bufferOut[3] = lenIn;
+	for (uint8_t i = 0; i < lenIn; i++)
+		writeByte(payloadIn[i]);
 
-	for (uint32_t i = 0; i < lenIn + METADATA_BYTES; i++)
-		bufferOut[i + 4] = payloadIn[i];
-
-	checkFunction(payloadIn, lenIn);
-
-	delete[] bufferOut;
+	writeByte(checkFunction(payloadIn, lenIn));
 }
 
-uint8_t Intranet::checkFunction(uint8_t* bufferIn, uint32_t lenIn) {
+uint8_t Intranet::checkFunction(uint8_t* bufferIn, uint8_t lenIn) {
 	// Default check = checksum
 	uint8_t out = 0x00;
 
-	for(uint32_t i = 0; i < lenIn; i++)
+	for(uint8_t i = 0; i < lenIn; i++)
 		out += bufferIn[i];
 
 	return out;
